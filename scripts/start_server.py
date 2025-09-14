@@ -16,7 +16,7 @@ def main():
     sys.path.insert(0, str(project_root))
     
     # Check if model file exists
-    model_path = project_root / "model" / "2025_09_12best_model.pth"
+    model_path = project_root / "model" / "model.pth"
     if not model_path.exists():
         print(f"Warning: Model file not found at {model_path}")
         print("The API will start but captcha solving will not work.")

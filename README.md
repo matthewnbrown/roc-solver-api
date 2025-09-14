@@ -37,7 +37,7 @@ captcha_solve_api/
 │   ├── test_api.py         # Basic API tests
 │   └── test_concurrency.py # Concurrency testing
 ├── model/                   # Trained model files
-│   └── 2025_09_12best_model.pth
+│   └── model.pth
 ├── requirements.txt         # Python dependencies
 ├── README.md               # This file
 ├── Dockerfile              # Docker configuration
@@ -53,7 +53,7 @@ pip install -r requirements.txt
 
 2. Ensure your trained model is in the correct location:
 ```
-model/2025_09_12best_model.pth
+model/model.pth
 ```
 
 ## Usage

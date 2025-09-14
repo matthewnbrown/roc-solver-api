@@ -74,7 +74,7 @@ def main():
     
     # Check model file
     print("\n🤖 Model Files:")
-    check_file_exists("model/2025_09_12best_model.pth", "Trained PyTorch model")
+    check_file_exists("model/model.pth", "Trained PyTorch model")
     
     # Check import structure (basic validation)
     print("\n🔧 Import Structure Validation:")

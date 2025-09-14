@@ -7,7 +7,8 @@ services:
       - "8000:8000"
     volumes:
       - ./model:/app/model
-      - ./captcha_api.db:/app/captcha_api.db
+      - ./data:/app/data
+      - ./captcha_backup:/app/captcha_backup
     environment:
       - PYTHONUNBUFFERED=1
     restart: unless-stopped

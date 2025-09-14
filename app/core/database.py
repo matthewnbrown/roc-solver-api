@@ -307,7 +307,8 @@ def get_db_manager() -> DatabaseManager:
     """Get the global database manager instance"""
     global db_manager
     if db_manager is None:
-        db_manager = DatabaseManager()
+        from .config import Config
+        db_manager = DatabaseManager(Config.DATABASE_PATH)
     return db_manager
 
 def init_database_manager(db_path: str = "captcha_api.db", timeout: float = 30.0, retry_attempts: int = 3) -> DatabaseManager:

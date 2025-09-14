@@ -1,0 +1,10 @@
+# CPU-only PyTorch for smaller Docker image size
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.0.1+cpu
+torchvision==0.15.2+cpu
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0
+python-multipart>=0.0.6
+pillow>=10.0.0
+numpy>=1.24.0,<2.0.0
+requests>=2.31.0

@@ -20,7 +20,7 @@ def main():
     os.environ['PYTHONPATH'] = current_dir
     
     # Check if model file exists
-    model_path = "model/2025_09_12best_model.pth"
+    model_path = "model/model.pth"
     if not os.path.exists(model_path):
         print(f"Warning: Model file not found at {model_path}")
         print("The API will start but captcha solving will not work.")

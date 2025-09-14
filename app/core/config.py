@@ -19,7 +19,7 @@ class Config:
     MODEL_DEVICE: str = os.getenv("MODEL_DEVICE", "auto")  # auto, cpu, cuda
     
     # Database Settings
-    DATABASE_PATH: str = os.getenv("DATABASE_PATH", "captcha_api.db")
+    DATABASE_PATH: str = os.getenv("DATABASE_PATH", "data/captcha_api.db")
     DATABASE_TIMEOUT: float = float(os.getenv("DATABASE_TIMEOUT", "30.0"))
     DATABASE_RETRY_ATTEMPTS: int = int(os.getenv("DATABASE_RETRY_ATTEMPTS", "3"))
     
