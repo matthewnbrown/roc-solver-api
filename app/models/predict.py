@@ -66,8 +66,8 @@ class CaptchaPredictor:
         if isinstance(image_path, str):
             image = Image.open(image_path).convert('RGB')
         else:
-            image = image_path
-        
+            image = image_path.convert('RGB')
+
         # Apply transforms
         image_tensor = self.transform(image)
         

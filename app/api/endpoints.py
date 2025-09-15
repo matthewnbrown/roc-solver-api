@@ -87,25 +87,23 @@ async def solve_captcha(
         
         # Validate image format
         try:
-            pil_image = Image.open(BytesIO(image_data))
-            pil_image.verify()
+            validation_image = Image.open(BytesIO(image_data))
+            validation_image.verify()
         except Exception as e:
             raise HTTPException(status_code=400, detail=f"Invalid image format: {str(e)}")
         
-        # Reset BytesIO for prediction
         image_io = BytesIO(image_data)
+        image_io.seek(0)
         pil_image = Image.open(image_io)
-        
-        # Make prediction
-        predicted_answer, confidence = predictor.predict_single(pil_image)
         
         # Save image to backup directory
         image_filepath = save_image_to_backup(image_data, request_id, captcha_hash)
         
-        # Store request in database using thread-safe manager
+        predicted_answer, confidence = predictor.predict_single(pil_image)
+      
         db_manager = get_db_manager()
         success = db_manager.insert_captcha_request(
-            request_id, captcha_hash, image_data, predicted_answer, confidence, image_filepath
+            request_id, captcha_hash, predicted_answer, confidence, image_filepath
         )
         
         if not success:

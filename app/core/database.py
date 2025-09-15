@@ -40,7 +40,6 @@ class DatabaseManager:
                 CREATE TABLE IF NOT EXISTS captcha_requests (
                     id TEXT PRIMARY KEY,
                     captcha_hash TEXT NOT NULL,
-                    image_data BLOB,
                     image_filepath TEXT,
                     predicted_answer TEXT,
                     confidence REAL,
@@ -155,17 +154,17 @@ class DatabaseManager:
                 raise
     
     def insert_captcha_request(self, request_id: str, captcha_hash: str, 
-                             image_data: bytes, predicted_answer: str, confidence: float, 
+                             predicted_answer: str, confidence: float, 
                              image_filepath: str = None) -> bool:
         """Insert a new captcha request"""
         query = '''
             INSERT INTO captcha_requests 
-            (id, captcha_hash, image_data, image_filepath, predicted_answer, confidence)
-            VALUES (?, ?, ?, ?, ?, ?)
+            (id, captcha_hash, image_filepath, predicted_answer, confidence)
+            VALUES (?, ?, ?, ?, ?)
         '''
         
         try:
-            self.execute_with_retry(query, (request_id, captcha_hash, image_data, image_filepath, predicted_answer, confidence))
+            self.execute_with_retry(query, (request_id, captcha_hash, image_filepath, predicted_answer, confidence))
             logger.info(f"Inserted captcha request: {request_id}")
             return True
         except Exception as e:
