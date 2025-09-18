@@ -2,10 +2,11 @@ import torch
 import torch.nn.functional as F
 from torchvision import transforms
 from PIL import Image
-import numpy as np
 import os
 import argparse
-from .model import create_model
+
+from app.models.model import create_model
+
 
 class CaptchaPredictor:
     def __init__(self, model_path, device='cuda'):
@@ -67,7 +68,7 @@ class CaptchaPredictor:
             image = Image.open(image_path).convert('RGB')
         else:
             image = image_path.convert('RGB')
-
+        
         # Apply transforms
         image_tensor = self.transform(image)
         
